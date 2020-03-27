@@ -6,10 +6,12 @@ class array
         int *a;
         int size;
 
-        array(int s)
+        array(int s, int k)
         {
             size = s;
             a = new int[size];
+            for (int i = 0; i < size; i++)
+                a[i] = k;
         }
 
         array(const array &copyArr)
@@ -19,7 +21,7 @@ class array
             for (int i = 0; i < size; i++)
                 a[i] = copyArr.a[i];
         }
-        
+
         ~array()
         {
             delete[] a;
@@ -33,16 +35,9 @@ void print(array a)
     printf("\n");
 }
 
-void init(array *a)
-{
-    for (int i = 0; i < a->size; i++)
-        a->a[i] = i;
-}
-
 int main()
 {
-    array arr(5);
-    init(&arr);
+    array arr(5, 5);
     print(arr);
     return 0;
 }
