@@ -22,8 +22,14 @@ public:
 
 	dinMemory(const dinMemory & a)
 	{
-		p = a.p;
 		col_el = a.col_el;
+		p = new int[col_el];
+
+		for (int i = 0; i < col_el; i++)
+		{
+			p[i] = a.p[i];
+		}
+				
 	}
 
 	~dinMemory()
@@ -42,7 +48,7 @@ public:
 	}
 };
 
-void printArr(dinMemory &p)
+void printArr(dinMemory p)
 {
 	int * pTemp = p.get_p();
 	int i = p.get_col();
