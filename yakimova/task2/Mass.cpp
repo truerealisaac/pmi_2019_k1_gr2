@@ -11,7 +11,7 @@ Mass::Mass(int size)
 	}
 }
 
-Mass::Mass(Mass& x)
+Mass::Mass(const Mass& x)
 {
 	n = x.n;
 	a = new int[n];
