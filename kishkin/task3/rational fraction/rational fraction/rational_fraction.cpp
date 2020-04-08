@@ -112,6 +112,19 @@ const rational_fraction rational_fraction::operator/(const rational_fraction& dr
 	return c;
 }
 
+const rational_fraction& operator++(rational_fraction& drob) {
+	drob.ch = drob.ch + drob.zn;
+	
+	return drob;
+}
+
+const rational_fraction operator++(rational_fraction& drob, int)
+{
+	drob.ch = drob.ch + drob.zn;
+
+	return drob;
+}
+
 
 
 

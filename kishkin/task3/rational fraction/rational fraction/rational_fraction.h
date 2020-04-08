@@ -16,6 +16,9 @@ public:
 	const rational_fraction operator-(const rational_fraction& drob) const;
 	const rational_fraction operator*(const rational_fraction& drob) const;
 	const rational_fraction operator/(const rational_fraction& drob) const;
+
+	friend const rational_fraction& operator++(rational_fraction& drob);
+	friend const rational_fraction operator++(rational_fraction& drob, int);
 private:
 	int ch;
 	int zn;

@@ -22,6 +22,14 @@ int main() {
 	a.print();
 	printf("\n");
 
+	++a;
+	a.print();
+	printf("\n");
+
+	a++;
+	a.print();
+	printf("\n");
+
 
 	return 0;
 }
