@@ -12,14 +12,10 @@ public:
 
 	void print();
 
-	const rational_fraction operator+(const rational_fraction& drob) const {
-		int ch1, zn1;
-		ch1 = ch * drob.zn + drob.ch * zn;
-		zn1 = zn * drob.zn;
-		rational_fraction c(ch1, zn1);
-
-		return c;
-	}
+	const rational_fraction operator+(const rational_fraction& drob) const;
+	const rational_fraction operator-(const rational_fraction& drob) const;
+	const rational_fraction operator*(const rational_fraction& drob) const;
+	const rational_fraction operator/(const rational_fraction& drob) const;
 private:
 	int ch;
 	int zn;
