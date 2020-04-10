@@ -81,11 +81,12 @@ const rational rational::operator/ (const rational &s)
    c.abb();
    return c;
 }
-const rational &operator++(rational &s, int)
+
+rational &rational::operator++(int)
 {
-   s.n = s.n + s.m;
-   s.abb();
-   return s;
+    n=n+m;
+    if (n == 0) m = 1;
+    return *this;
 }
 
 void rational::print()
