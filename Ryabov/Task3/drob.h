@@ -1,3 +1,4 @@
+#pragma once
 class RacDrob {
 public:
 	RacDrob();
@@ -7,11 +8,12 @@ public:
 	int getzn();
 	void setch(int _ch);
 	int getch();
+	
 	const RacDrob operator+(const RacDrob& drob);
 	const RacDrob operator-(const RacDrob& drob);
 	const RacDrob operator*(const RacDrob& drob);
 	const RacDrob operator/(const RacDrob& drob);
-	friend const   RacDrob& operator++(RacDrob& drob,int);
+RacDrob& operator++(int);
 private:
 	int zn;
 	int ch;
