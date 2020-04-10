@@ -12,6 +12,6 @@ public:
    const rational operator- (const rational &s);
    const rational operator* (const rational &s);
    const rational operator/ (const rational &s);
-   friend const rational &operator++(rational &s, int);
+   rational &operator++(int);
    void print ();
  };
