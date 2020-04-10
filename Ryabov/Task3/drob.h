@@ -11,7 +11,7 @@ public:
 	const RacDrob operator-(const RacDrob& drob);
 	const RacDrob operator*(const RacDrob& drob);
 	const RacDrob operator/(const RacDrob& drob);
-	friend const   RacDrob& operator++(RacDrob& drob,int);
+	const   RacDrob& operator++(RacDrob& drob,int);
 private:
 	int zn;
 	int ch;
