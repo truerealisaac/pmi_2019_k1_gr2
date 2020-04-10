@@ -63,47 +63,47 @@ void rational::reduction()
 
 void rational::show()
 {
-	cout << "%d/%d" << ch << zn << endl;
+	cout << ch <<"/"<< zn << endl;
 }
 
 rational rational::operator +(const rational& addend)
 {
 	rational result(this->ch * addend.zn + addend.ch * this->zn, this->zn * addend.zn);
-	result.reduction;
+	result.reduction();
 	return result;
 }
 
 rational rational::operator -(const rational& subtrahend)
 {
 	rational result(this->ch * subtrahend.zn - subtrahend.ch * this->zn, this->zn * subtrahend.zn);
-	result.reduction;
+	result.reduction();
 	return result;
 }
 
 rational rational::operator *(const rational& multiplier)
 {
 	rational result(this->ch * multiplier.ch, this->zn * multiplier.zn);
-	result.reduction;
+	result.reduction();
 	return result;
 }
 
 rational rational::operator /(const rational& divider)
 {
 	rational result(this->ch * divider.zn, this->zn * divider.ch);
-	result.reduction;
+	result.reduction();
 	return result;
 }
 
 rational operator++(rational& a, int)
 {
 	a.ch = a.ch + a.zn;
-	a.reduction;
+	a.reduction();
 	return a;
 }
 
 rational& operator++(rational& a)
 {
 	a.ch = a.ch + a.zn;
-	a.reduction;
+	a.reduction();
 	return a;
 }
