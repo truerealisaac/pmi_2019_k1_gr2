@@ -83,8 +83,8 @@ const RacDrob RacDrob::operator/(const RacDrob& drob) {
 	c.red();
 	return c;
 }
-const RacDrob& operator++(RacDrob& drob, int){
-	drob.ch = drob.ch + drob.zn;
-	drob.red();
-	return drob;
+ RacDrob& RacDrob :: operator++(int){
+	ch = ch +zn;
+	
+	return *this;
 }
