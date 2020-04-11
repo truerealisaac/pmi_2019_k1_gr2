@@ -17,8 +17,8 @@ public:
 	const drob operator *(const drob& mul);
 	const drob operator /(const drob& div);
 	
-	friend const drob& operator++(drob& add1);
-	friend const drob& operator++(drob& add1,int);
+	drob operator++();
+	drob operator++(int);
 private:
 
 	void reduct();

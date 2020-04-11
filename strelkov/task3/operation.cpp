@@ -85,21 +85,19 @@ const drob drob::operator/(const drob& div)
 
 	return c;
 }
-const drob& operator++(drob& add1)
+ drob drob::operator++()
 {
-	
-	add1.ch = add1.ch + add1.zn;
-	add1.reduct();
+	ch = ch + zn;
+	reduct();
 
-	return add1;
+	return *this;
 }
-const drob& operator++(drob& add1, int)
+drob drob::operator++(int)
 {
-	
-	add1.ch = add1.ch + add1.zn;
-	add1.reduct();
+	ch = ch + zn;
+	reduct();
 
-	return add1;
+	return *this;
 }
 
 void drob::print()
