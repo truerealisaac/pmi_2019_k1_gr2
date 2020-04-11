@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	rational a(1, 2), b(1, 3), c;
+	rational a(1, 3), b(1, 2), c;
 
 	c = a + b;
 	c.show();
@@ -23,11 +23,11 @@ int main()
 	c.show();
 	cout << "\n" << endl;
 
-	++a;
+	a = ++a;
 	a.show();
 	cout << "\n" << endl;
 
-	a++;
+	a = a++;
 	a.show();
 	cout << "\n" << endl;
 

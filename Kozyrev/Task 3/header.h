@@ -22,7 +22,7 @@ public:
 	rational operator *(const rational& multiplier);
 	rational operator /(const rational& divider);
 
-	friend rational operator ++(rational& a, int);
-	friend rational& operator ++(rational& a);
+	rational operator++(int);
+	rational& operator++();
 };
 

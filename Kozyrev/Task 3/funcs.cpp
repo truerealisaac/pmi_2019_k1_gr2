@@ -68,42 +68,42 @@ void rational::show()
 
 rational rational::operator +(const rational& addend)
 {
-	rational result(this->ch * addend.zn + addend.ch * this->zn, this->zn * addend.zn);
+	rational result(ch * addend.zn + addend.ch * zn, zn * addend.zn);
 	result.reduction();
 	return result;
 }
 
 rational rational::operator -(const rational& subtrahend)
 {
-	rational result(this->ch * subtrahend.zn - subtrahend.ch * this->zn, this->zn * subtrahend.zn);
+	rational result(ch * subtrahend.zn - subtrahend.ch * zn, zn * subtrahend.zn);
 	result.reduction();
 	return result;
 }
 
 rational rational::operator *(const rational& multiplier)
 {
-	rational result(this->ch * multiplier.ch, this->zn * multiplier.zn);
+	rational result(ch * multiplier.ch, zn * multiplier.zn);
 	result.reduction();
 	return result;
 }
 
 rational rational::operator /(const rational& divider)
 {
-	rational result(this->ch * divider.zn, this->zn * divider.ch);
+	rational result(ch * divider.zn, zn * divider.ch);
 	result.reduction();
 	return result;
 }
 
-rational operator++(rational& a, int)
+rational rational::operator++(int)
 {
-	a.ch = a.ch + a.zn;
-	a.reduction();
-	return a;
+	rational result(ch + zn, zn);
+	result.reduction();
+	return result;
 }
 
-rational& operator++(rational& a)
+rational& rational::operator++()
 {
-	a.ch = a.ch + a.zn;
-	a.reduction();
-	return a;
+	rational result(ch + zn, zn);
+	result.reduction();
+	return result;
 }
