@@ -9,6 +9,11 @@ Drob::Drob()//Конструктор по-умолчанию
 
 Drob::Drob(double _ch, double _zn)//Конструктор по-значению
 {
+    if (_zn == 0)
+    {
+        std::cout << "Ноль в знаменателе";
+        return;
+    }
     ch = _ch;
     zn = _zn;
 }
@@ -50,7 +55,7 @@ void Drob::Print()
     std::cout << ch << '/' << zn << std::endl;
 }
 
-const Drob operator ++(Drob &a, int)
+/*const Drob operator ++(Drob &a, int)
 {
     a.ch += a.zn;
     return a;
@@ -60,6 +65,17 @@ const Drob &operator ++(Drob &a)
 {
     a.ch += a.zn;
     return a;
+}*/
+
+Drob Drob::operator ++(int)
+{
+    Drob a = *this;
+    ++*this;
+    return a;
 }
 
-
+Drob &Drob::operator ++()
+{
+    ch += zn;
+    return *this;
+}

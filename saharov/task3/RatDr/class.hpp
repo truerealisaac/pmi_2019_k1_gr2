@@ -11,8 +11,8 @@ public:
     Drob operator -(const Drob &a);
     Drob operator *(const Drob &a);
     Drob operator /(const Drob &a);
-    friend const Drob operator ++(Drob &a, int);
-    friend const Drob &operator ++(Drob &a);
+    Drob operator ++(int);
+    Drob &operator ++();
     void Print();
 };
 
