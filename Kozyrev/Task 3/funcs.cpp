@@ -96,14 +96,26 @@ rational rational::operator /(const rational& divider)
 
 rational rational::operator++(int)
 {
-	rational result(ch + zn, zn);
+	ch = ch + zn;
+	rational result(ch, zn);
 	result.reduction();
-	return result;
+	ch = result.ch;
+	zn = result.zn;
+	return *this;
+	//rational result(ch + zn, zn);
+	//result.reduction();
+	//return result;
 }
 
 rational& rational::operator++()
 {
-	rational result(ch + zn, zn);
+	ch = ch + zn;
+	rational result(ch, zn);
 	result.reduction();
-	return result;
+	ch = result.ch;
+	zn = result.zn;
+	return *this;
+	//rational result(ch + zn, zn);
+	//result.reduction();
+	//return result;
 }

@@ -23,11 +23,13 @@ int main()
 	c.show();
 	cout << "\n" << endl;
 
-	a = ++a;
+	//a = ++a;
+	++a;
 	a.show();
 	cout << "\n" << endl;
 
-	a = a++;
+	//a = a++;
+	a++;
 	a.show();
 	cout << "\n" << endl;
 
