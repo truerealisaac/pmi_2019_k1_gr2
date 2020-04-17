@@ -18,7 +18,7 @@ class rational
     rational& operator++();
     rational& operator--();
     friend istream& operator>>(istream& stream, rational& x);
-	friend ostream& operator<<(ostream& stream, const rational& x);
+    friend ostream& operator<<(ostream& stream, const rational& x);
 
     private:
     

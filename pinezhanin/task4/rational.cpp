@@ -1,6 +1,5 @@
 #include"rational.h"
 #include<math.h>
-#include<stdio.h>
 
 rational::rational(const int &_p,const int &_q)
 {
