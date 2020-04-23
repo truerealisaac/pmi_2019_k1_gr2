@@ -35,6 +35,14 @@ void nod::searchNod(int num1, int num2) {
 		num = alg_evk(num2, num1);
 }
 
+int nod::searchNodInt(int num1, int num2)
+{
+	if (num1 >= num2)
+		return alg_evk(num1, num2);
+	else
+		return alg_evk(num2, num1);
+}
+
 int nod::getNod() {
 	return num;
 }
@@ -57,9 +65,9 @@ rat_frac1::rat_frac1(int _ch, int _zn) {
 		zn = _zn;
 		nodChZn.setNod(1);
 	}
-	nod nod(_ch, _zn);
-	ch = _ch / nod.getNod();
-	zn = _zn / nod.getNod();
+	nodChZn.searchNod(_ch, _zn);
+	ch = _ch / nodChZn.getNod();
+	zn = _zn / nodChZn.getNod();
 	nodChZn.setNod(1);
 }
 
@@ -129,9 +137,9 @@ rat_frac2::rat_frac2(int _ch, int _zn) {
 		zn = _zn;
 		num = 1;
 	}
-	nod nod(_ch, _zn);
-	ch = _ch / nod.getNod();
-	zn = _zn / nod.getNod();
+	num = searchNodInt(_ch, _zn);
+	ch = _ch / num;
+	zn = _zn / num;
 	num = 1;
 }
 

@@ -9,6 +9,7 @@ public:
 
 	void setNod(int _num);
 	void searchNod(int num1, int num2);
+	int searchNodInt(int num1, int num2);
 	int getNod();
 };
 
