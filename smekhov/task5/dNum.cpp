@@ -6,21 +6,21 @@
 
 void dNumA::reduction()
 {
-	int b = n.findNOD();
-	n.first = n.first / b;
-	n.second = n.second / b;
+	int nod = n.getNOD();
+	n.setF(n.getF() / nod);
+	n.setS(n.getS() / nod);
 }
 
 dNumA::dNumA()
 {
-	n.first = 0;
-	n.second = 1;
+	n.setF(0);
+	n.setS(1);
 }
 
 dNumA::dNumA(const int& a)
 {
-	n.first = a;
-	n.second = 1;
+	n.setF(a);
+	n.setS(1);
 }
 
 dNumA::dNumA(const int& a, const int& b)
@@ -28,20 +28,20 @@ dNumA::dNumA(const int& a, const int& b)
 	if (b == 0)
 	{
 		printf("Wrong number! Created 0 / 1.\n");
-		n.first = 0;
-		n.second = 1;
+		n.setF(0);
+		n.setS(1);
 	}
 	else
 	{
 		if (b < 0)
 		{
-			n.first = -a;
-			n.second = -b;
+			n.setF(-a);
+			n.setS(-b);
 		}
 		else
 		{
-			n.first = a;
-			n.second = b;
+			n.setF(a);
+			n.setS(b);
 		}
 		this->reduction();
 	}
@@ -49,63 +49,66 @@ dNumA::dNumA(const int& a, const int& b)
 
 dNumA& dNumA::operator+(const dNumA& num2)
 {
-	n.first = n.first * num2.n.second + num2.n.first * n.second;
-	n.second *= num2.n.second;
+	n.setF(n.getF() * num2.n.getS() + num2.n.getF() * n.getS());
+	n.setS(n.getS() * num2.n.getS());
 	this->reduction();
 	return *this;
 }
 
 dNumA& dNumA::operator-(const dNumA& num2)
 {
-	n.first = n.first * num2.n.second - num2.n.first * n.second;
-	n.first *= num2.n.second;
+	n.setF(n.getF() * num2.n.getS() - num2.n.getF() * n.getS());
+	n.setS(n.getS() * num2.n.getS());
 	this->reduction();
 	return *this;
 }
 
 dNumA& dNumA::operator*(const dNumA& num2)
 {
-	n.first *= num2.n.first;
-	n.second *= num2.n.second;
+	n.setF(n.getF() * num2.n.getF());
+	n.setS(n.getS() * num2.n.getS());
 	this->reduction();
 	return *this;
 }
 
 dNumA& dNumA::operator/(const dNumA& num2)
 {
-	if (num2.n.second == 0)
+	if (num2.n.getS() == 0)
 	{
 		printf("Wrong second number!\n");
 		return *this;
 	}
-	n.first *= num2.n.second;
-	n.second *= num2.n.first;
+	n.setF(n.getF() * num2.n.getS());
+	n.setS(n.getS() * num2.n.getF());
 	this->reduction();
 	return *this;
 }
 
 dNumA& dNumA::operator++(int)
 {
-	n.first += n.second;
-	if (n.first == 0) n.second = 1;
+	n.setF(n.getF() + n.getS());
+	if (n.getF() == 0) n.setS(1);
 	return *this;
 }
 
 dNumA& dNumA::operator--(int)
 {
-	n.first -= n.second;
-	if (n.first == 0) n.second = 1;
+	n.setF(n.getF() - n.getS());
+	if (n.getF() == 0) n.setS(1);
 	return *this;
 }
 
 std::istream& operator>>(std::istream& stream, dNumA& number)
 {
-	stream >> number.n.first >> number.n.second;
+	int f = 0, s = 0;
+	stream >> f >> s;
+	number.n.setF(f);
+	number.n.setS(s);
 	return stream;
 }
 std::ostream& operator<<(std::ostream& stream, const dNumA& number)
 {
-	stream << number.n.first << " / " << number.n.second;
+	stream << number.n.getF() << " / " << number.n.getS();
 	return stream;
 }
 

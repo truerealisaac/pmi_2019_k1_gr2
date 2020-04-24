@@ -1,16 +1,11 @@
 #include "NOD.h"
 
 
-twoNumber::twoNumber()
-{
-	first = 0;
-	second = 0;
-}
-
 twoNumber::twoNumber(const int& f, const int& s)
 {
 	first = f;
 	second = s;
+	nod = findNOD();
 }
 
 int twoNumber::findNOD()
@@ -38,4 +33,27 @@ int twoNumber::findNOD()
 		r = a % b;
 	}
 	return b;
+}
+const int twoNumber::getF() const
+{
+	return first;
+}
+void twoNumber::setF(const int& f)
+{
+	first = f;
+	nod = findNOD();
+}
+const int twoNumber::getS() const
+{
+	return second;
+}
+void twoNumber::setS(const int& s)
+{
+	second = s;
+	nod = findNOD();
+}
+
+const int twoNumber::getNOD() const
+{
+	return nod;
 }
