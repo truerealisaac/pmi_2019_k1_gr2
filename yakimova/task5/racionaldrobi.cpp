@@ -55,11 +55,13 @@ racionaldrobi_ag::racionaldrobi_ag() : nod(1,1)
 {
 	ch = 0;
 	zn = 1;
+	reduction();
 }
 racionaldrobi_ag::racionaldrobi_ag(int a) : nod(1,1)
 {
 	ch = a;
 	zn = 1;
+	reduction();
 }
 racionaldrobi_ag::racionaldrobi_ag(int a, int b) : nod(1,1)
 {
