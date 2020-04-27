@@ -15,7 +15,7 @@ int main() {
 	cout << c << "\n" << d << "\n";
 	cin >> c;
 	c = c + d;
-	cout << d;
+	cout << c;
 
 	return 0;
 }

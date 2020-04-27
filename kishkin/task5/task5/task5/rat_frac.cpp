@@ -130,7 +130,22 @@ rat_frac2::rat_frac2() {
 	num = 1;
 }
 
+/*
 rat_frac2::rat_frac2(int _ch, int _zn) {
+	if (_zn == 0) {
+		std::cout << "wrong znamenatel (= 0). zn = 1";
+		ch = _ch;
+		zn = _zn;
+		num.setNod(1);
+	}
+	num = searchNodInt(_ch, _zn);
+	ch = _ch / num;
+	zn = _zn / num;
+	num = 1;
+}
+*/
+
+rat_frac2::rat_frac2(int _ch, int _zn):nod() {
 	if (_zn == 0) {
 		std::cout << "wrong znamenatel (= 0). zn = 1";
 		ch = _ch;
