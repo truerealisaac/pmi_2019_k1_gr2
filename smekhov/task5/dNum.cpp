@@ -4,23 +4,14 @@
 
 //dNumA
 
-void dNumA::reduction()
-{
-	int nod = n.getNOD();
-	n.setF(n.getF() / nod);
-	n.setS(n.getS() / nod);
-}
-
 dNumA::dNumA()
 {
-	n.setF(0);
-	n.setS(1);
+	n.setBoth(0, 1);
 }
 
 dNumA::dNumA(const int& a)
 {
-	n.setF(a);
-	n.setS(1);
+	n.setBoth(a, 1);
 }
 
 dNumA::dNumA(const int& a, const int& b)
@@ -28,46 +19,40 @@ dNumA::dNumA(const int& a, const int& b)
 	if (b == 0)
 	{
 		printf("Wrong number! Created 0 / 1.\n");
-		n.setF(0);
-		n.setS(1);
+		n.setBoth(0, 1);
 	}
 	else
 	{
 		if (b < 0)
 		{
-			n.setF(-a);
-			n.setS(-b);
+			n.setBoth(-a, -b);
 		}
 		else
 		{
-			n.setF(a);
-			n.setS(b);
+			n.setBoth(a, b);
 		}
-		this->reduction();
+		n.reduction();
 	}
 }
 
 dNumA& dNumA::operator+(const dNumA& num2)
 {
-	n.setF(n.getF() * num2.n.getS() + num2.n.getF() * n.getS());
-	n.setS(n.getS() * num2.n.getS());
-	this->reduction();
+	n.setBoth(n.getF() * num2.n.getS() + num2.n.getF() * n.getS(), n.getS() * num2.n.getS());
+	n.reduction();
 	return *this;
 }
 
 dNumA& dNumA::operator-(const dNumA& num2)
 {
-	n.setF(n.getF() * num2.n.getS() - num2.n.getF() * n.getS());
-	n.setS(n.getS() * num2.n.getS());
-	this->reduction();
+	n.setBoth(n.getF() * num2.n.getS() - num2.n.getF() * n.getS(), n.getS() * num2.n.getS());
+	n.reduction();
 	return *this;
 }
 
 dNumA& dNumA::operator*(const dNumA& num2)
 {
-	n.setF(n.getF() * num2.n.getF());
-	n.setS(n.getS() * num2.n.getS());
-	this->reduction();
+	n.setBoth(n.getF() * num2.n.getF(), n.getS() * num2.n.getS());
+	n.reduction();
 	return *this;
 }
 
@@ -78,9 +63,8 @@ dNumA& dNumA::operator/(const dNumA& num2)
 		printf("Wrong second number!\n");
 		return *this;
 	}
-	n.setF(n.getF() * num2.n.getS());
-	n.setS(n.getS() * num2.n.getF());
-	this->reduction();
+	n.setBoth(n.getF() * num2.n.getS(), n.getS() * num2.n.getF());
+	n.reduction();
 	return *this;
 }
 
@@ -102,8 +86,7 @@ std::istream& operator>>(std::istream& stream, dNumA& number)
 {
 	int f = 0, s = 0;
 	stream >> f >> s;
-	number.n.setF(f);
-	number.n.setS(s);
+	number.n.setBoth(f, s);
 	return stream;
 }
 std::ostream& operator<<(std::ostream& stream, const dNumA& number)
@@ -114,23 +97,18 @@ std::ostream& operator<<(std::ostream& stream, const dNumA& number)
 
 //dNumN
 
-void dNumN::reduction()
-{
-	int b = findNOD();
-	first = first / b;
-	second = second / b;
-}
-
 dNumN::dNumN()
 {
 	first = 0;
 	second = 1;
+	nod = 1;
 }
 
 dNumN::dNumN(const int& a)
 {
 	first = a;
 	second = 1;
+	nod = 1;
 }
 
 dNumN::dNumN(const int& a, const int& b)
@@ -140,6 +118,7 @@ dNumN::dNumN(const int& a, const int& b)
 		printf("Wrong number! Created 0 / 1.\n");
 		first = 0;
 		second = 1;
+		nod = 1;
 	}
 	else
 	{
@@ -153,7 +132,8 @@ dNumN::dNumN(const int& a, const int& b)
 			first = a;
 			second = b;
 		}
-		this->reduction();
+		nod = findNOD();
+		reduction();
 	}
 }
 
@@ -161,7 +141,8 @@ dNumN& dNumN::operator+(const dNumN& num2)
 {
 	first = first * num2.second + num2.first * second;
 	second *= num2.second;
-	this->reduction();
+	nod = findNOD();
+	reduction();
 	return *this;
 }
 
@@ -169,7 +150,8 @@ dNumN& dNumN::operator-(const dNumN& num2)
 {
 	first = first * num2.second - num2.first * second;
 	first *= num2.second;
-	this->reduction();
+	nod = findNOD();
+	reduction();
 	return *this;
 }
 
@@ -177,7 +159,8 @@ dNumN& dNumN::operator*(const dNumN& num2)
 {
 	first *= num2.first;
 	second *= num2.second;
-	this->reduction();
+	nod = findNOD();
+	reduction();
 	return *this;
 }
 
@@ -190,7 +173,8 @@ dNumN& dNumN::operator/(const dNumN& num2)
 	}
 	first *= num2.second;
 	second *= num2.first;
-	this->reduction();
+	nod = findNOD();
+	reduction();
 	return *this;
 }
 

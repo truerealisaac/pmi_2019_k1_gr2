@@ -57,3 +57,16 @@ const int twoNumber::getNOD() const
 {
 	return nod;
 }
+
+void twoNumber::setBoth(const int& f, const int& s)
+{
+	first = f;
+	second = s;
+	nod = findNOD();
+}
+
+void twoNumber::reduction()
+{
+	first = first / nod;
+	second = second / nod;
+}

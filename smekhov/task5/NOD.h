@@ -11,4 +11,6 @@ public:
 	const int getS() const;
 	void setS(const int& s);
 	const int getNOD() const;
+	void setBoth(const int& f, const int& s);
+	void reduction();
 };

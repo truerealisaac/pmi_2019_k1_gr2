@@ -6,7 +6,6 @@ class dNumA
 {
 private:
 	twoNumber n;
-	void reduction();
 public:
 	dNumA();
 	dNumA(const int& a);
@@ -23,8 +22,6 @@ public:
 
 class dNumN: private twoNumber
 {
-private:
-	void reduction();
 public:
 	dNumN();
 	dNumN(const int& a);
