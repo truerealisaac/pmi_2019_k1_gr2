@@ -26,11 +26,10 @@ void Drob1::reduct1(Drob1 &d)
 
 Drob1 Drob1::operator +(const Drob1 &a)//Сложение
 {
-    Drob1 c;
-    c.ch = zn*a.ch + ch*a.zn;
-    c.zn = zn * a.zn;
-    reduct1(c);
-    return c;
+    ch = zn*a.ch + ch*a.zn;
+    zn = zn * a.zn;
+    reduct1(*this);
+    return *this;
 }
 
 Drob1 Drob1::operator -(const Drob1 &a)//Вычитание

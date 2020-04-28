@@ -27,11 +27,11 @@ void Drob2::reduct2(Drob2 &d)
 
 Drob2 Drob2::operator +(const Drob2 &a)//Сложение
 {
-    Drob2 c;
-    c.ch = zn*a.ch + ch*a.zn;
-    c.zn = zn * a.zn;
-    reduct2(c);
-    return c;
+    //Drob2 c;
+    ch = zn*a.ch + ch*a.zn;
+    zn = zn * a.zn;
+    reduct2(*this);
+    return *this;
 }
 
 Drob2 Drob2::operator -(const Drob2 &a)//Вычитание
