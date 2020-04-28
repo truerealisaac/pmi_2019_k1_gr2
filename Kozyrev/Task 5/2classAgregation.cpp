@@ -21,7 +21,6 @@ class2::class2(const int& a, const int& b)
 {
 	if (b == 0)
 	{
-		cout << "error" << endl;
 		object.redef(0, 1);
 	}
 	object.redef(a, b);

@@ -5,42 +5,24 @@
 using namespace std;
 
 
-class3::class3()
+class3::class3() :class1()
 {
-	ch = 0;
-	zn = 1;
-	nod = 1;
 }
 
 
-class3::class3(const int& a)
+class3::class3(const int& a) :class1(a, 1)
 {
-	ch = a;
-	zn = 1;
-	nod = 1;
 }
 
 
-class3::class3(const int& a, const int& b)
+class3::class3(const int& a, const int& b) :class1(a, b)
 {
-	if (b == 0)
-	{
-		cout << "error" << endl;
-		ch = 0;
-		zn = 1;
-		nod = 1;
-	}
-	ch = a;
-	zn = b;
-	nod = evklid();
-	reduction();
 }
 
 
 class3& class3::operator+(const class3& a)
 {
-	ch = ch * a.zn + a.ch * zn;
-	zn = zn * a.zn;
+	redef(ch * a.zn + a.ch * zn, zn * a.zn);
 	nod = evklid();
 	reduction();
 	return *this;
@@ -49,8 +31,7 @@ class3& class3::operator+(const class3& a)
 
 class3& class3::operator-(const class3& a)
 {
-	ch = ch * a.zn - a.ch * zn;
-	ch = ch * a.zn;
+	redef(ch * a.zn - a.ch * zn, ch * a.zn);
 	nod = evklid();
 	reduction();
 	return *this;
@@ -59,8 +40,7 @@ class3& class3::operator-(const class3& a)
 
 class3& class3::operator*(const class3& a)
 {
-	ch = ch * a.ch;
-	zn = zn * a.zn;
+	redef(ch * a.ch, zn * a.zn);
 	nod = evklid();
 	reduction();
 	return *this;
@@ -74,8 +54,7 @@ class3& class3::operator/(const class3& a)
 		cout << "error" << endl;
 		return *this;
 	}
-	ch = ch * a.zn;
-	zn = zn * a.ch;
+	redef(ch * a.zn, zn * a.ch);
 	nod = evklid();
 	reduction();
 	return *this;
@@ -84,7 +63,7 @@ class3& class3::operator/(const class3& a)
 
 class3& class3::operator++(int)
 {
-	ch = ch + zn;
+	redef(ch + zn, zn);
 	if (ch == 0) zn = 1;
 	return *this;
 }

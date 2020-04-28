@@ -1,11 +1,25 @@
 #include "1class.h"
 #include "math.h"
 
+#include <iostream>
+using namespace std;
+
+
 class1::class1(const int& a, const int& b)
 {
-	ch = a;
-	zn = b;
-	nod = evklid();
+	if (b == 0)
+	{
+		ch = 0;
+		zn = 1;
+		nod = 1;
+	}
+	else
+	{
+		ch = a;
+		zn = b;
+		if (a == 0) nod = 1;
+		else nod = evklid();
+	}
 }
 
 
