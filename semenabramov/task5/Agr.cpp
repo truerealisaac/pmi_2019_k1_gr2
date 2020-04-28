@@ -14,8 +14,8 @@ Agr::~Agr()
 
 void Agr::Set()
 {
-	scanf("%d", &p);
-	scanf("%d", &q);
+	std::cin >> p;
+	std::cin >> q;
 }
 
 void Agr::Set(int a, int b) {
