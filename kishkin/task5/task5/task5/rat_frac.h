@@ -1,7 +1,7 @@
 #pragma once
 
 class nod {
-protected:
+private:
 	int num;
 public:
 	nod();

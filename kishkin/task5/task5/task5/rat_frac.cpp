@@ -124,38 +124,22 @@ std::ostream& operator<<(std::ostream& out, const rat_frac1& drob) {
 
 
 
-rat_frac2::rat_frac2() {
+rat_frac2::rat_frac2():nod() {
 	ch = 0;
 	zn = 1;
-	num = 1;
+	this->setNod(1);
 }
 
-/*
-rat_frac2::rat_frac2(int _ch, int _zn) {
+rat_frac2::rat_frac2(int _ch, int _zn):nod(_ch, _zn) {
 	if (_zn == 0) {
 		std::cout << "wrong znamenatel (= 0). zn = 1";
 		ch = _ch;
 		zn = _zn;
-		num.setNod(1);
+		this->setNod(1);
 	}
-	num = searchNodInt(_ch, _zn);
-	ch = _ch / num;
-	zn = _zn / num;
-	num = 1;
-}
-*/
-
-rat_frac2::rat_frac2(int _ch, int _zn):nod() {
-	if (_zn == 0) {
-		std::cout << "wrong znamenatel (= 0). zn = 1";
-		ch = _ch;
-		zn = _zn;
-		num = 1;
-	}
-	num = searchNodInt(_ch, _zn);
-	ch = _ch / num;
-	zn = _zn / num;
-	num = 1;
+	ch = _ch / this->getNod();
+	zn = _zn / this->getNod();
+	this->setNod(1);
 }
 
 const rat_frac2 rat_frac2::operator+(const rat_frac2& drob) const {
