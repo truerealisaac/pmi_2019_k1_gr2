@@ -14,8 +14,8 @@ Rat::~Rat()
 
 void Rat::Set()
 {
-	scanf("%d", &p);
-	scanf("%d", &q);
+	std::cin >> p;
+	std::cin >> q;
 }
 
 void Rat::Set(int a, int b) {
