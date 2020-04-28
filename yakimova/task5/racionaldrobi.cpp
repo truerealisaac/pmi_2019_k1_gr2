@@ -80,7 +80,6 @@ racionaldrobi_ag racionaldrobi_ag:: operator+(const racionaldrobi_ag& d)
 	ch = ch * d.zn + d.ch * zn;
 	zn = zn * d.zn;
 	racionaldrobi_ag c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_ag racionaldrobi_ag::operator-(const racionaldrobi_ag& d)
@@ -88,7 +87,6 @@ racionaldrobi_ag racionaldrobi_ag::operator-(const racionaldrobi_ag& d)
 	ch = ch * d.zn - d.ch * zn;
 	zn = zn * d.zn;
 	racionaldrobi_ag c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_ag racionaldrobi_ag::operator*(const racionaldrobi_ag& d)
@@ -96,7 +94,6 @@ racionaldrobi_ag racionaldrobi_ag::operator*(const racionaldrobi_ag& d)
 	ch = ch * d.ch;
 	zn = zn * d.zn;
 	racionaldrobi_ag c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_ag racionaldrobi_ag::operator/(const racionaldrobi_ag& d)
@@ -104,7 +101,6 @@ racionaldrobi_ag racionaldrobi_ag::operator/(const racionaldrobi_ag& d)
 	ch = ch * d.zn;
 	zn = zn * d.ch;
 	racionaldrobi_ag c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_ag& racionaldrobi_ag:: operator++(int)
@@ -135,11 +131,13 @@ racionaldrobi_na::racionaldrobi_na() : roditel(1, 1)
 {
 	ch = 0;
 	zn = 1;
+	reduction();
 }
 racionaldrobi_na::racionaldrobi_na(int a) : roditel(1, 1)
 {
 	ch = a;
 	zn = 1;
+	reduction();
 }
 racionaldrobi_na::racionaldrobi_na(int a, int b) : roditel(1,1)
 {
@@ -157,7 +155,6 @@ racionaldrobi_na racionaldrobi_na:: operator+(const racionaldrobi_na& d)
 	ch = ch * d.zn + d.ch * zn;
 	zn = zn * d.zn;
 	racionaldrobi_na c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_na racionaldrobi_na::operator-(const racionaldrobi_na& d)
@@ -165,7 +162,6 @@ racionaldrobi_na racionaldrobi_na::operator-(const racionaldrobi_na& d)
 	ch = ch * d.zn - d.ch * zn;
 	zn = zn * d.zn;
 	racionaldrobi_na c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_na racionaldrobi_na::operator*(const racionaldrobi_na& d)
@@ -173,7 +169,6 @@ racionaldrobi_na racionaldrobi_na::operator*(const racionaldrobi_na& d)
 	ch = ch * d.ch;
 	zn = zn * d.zn;
 	racionaldrobi_na c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_na racionaldrobi_na::operator/(const racionaldrobi_na& d)
@@ -181,7 +176,6 @@ racionaldrobi_na racionaldrobi_na::operator/(const racionaldrobi_na& d)
 	ch = ch * d.zn;
 	zn = zn * d.ch;
 	racionaldrobi_na c(ch, zn);
-	c.reduction();
 	return c;
 }
 racionaldrobi_na& racionaldrobi_na:: operator++(int)
