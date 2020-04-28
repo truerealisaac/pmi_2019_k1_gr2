@@ -1,68 +1,87 @@
 #pragma once
-#include<iostream>
-#include<stdio.h>
-#include"nod.h"
+#include <iostream>
+
 
 using namespace std;
 
-class fractionAgr
+
+class nod
+{
+public:
+	int find_nod(int, int);
+};
+
+class fraction1
 {
 private:
-	int znam;
-	int chisl;
+	int c;
+	int z;
 	nod n;
 	void do_normal(int);
-	
 
 public:
-	fractionAgr(int z=1,int c=0):znam(z),chisl(c){}
-	fractionAgr(fractionAgr&a)
+	fraction1(int _c = 0, int _z = 1) :c(_c), z(_z)
 	{
-		znam = a.znam;
-		chisl = a.chisl;
+		if (_z == 0)
+		{
+			cout << "wrong znam!\n";
+			c = 0;
+			z = 1;
+		}
 	}
 
-	fractionAgr& operator++();
-	fractionAgr operator+(const fractionAgr)const;
-	fractionAgr operator-(const fractionAgr)const;
-	fractionAgr operator*(const fractionAgr)const;
-	fractionAgr operator/(const fractionAgr)const;
-	
-	//----------------------------------------------------------------------------
-	
+	fraction1 operator+(const fraction1&);
+	fraction1 operator-(const fraction1&);
+	fraction1 operator*(const fraction1&);
+	fraction1 operator/(const fraction1&);
 
-	void init(int _chisl,int _znam)
+
+	int getC()
 	{
-		chisl = _chisl;
-		znam = _znam;
+		return c;
+	}
+	int getZ()
+	{
+		return z;
+	}
+};
+//-----------------------------------------------------------------------------------
+class fraction2:private nod
+{
+private:
+	int c;
+	int z;
+
+	void do_normal(int);
+
+public:
+	fraction2(int _c = 0, int _z = 1) :c(_c), z(_z)
+	{
+		if (_z == 0)
+		{
+			cout << "wrong znam!\n";
+			c = 0;
+			z = 1;
+		}
 	}
 
-	void print()
-	{
-		printf("%d/%d", chisl, znam);
-	}
+	fraction2 operator+(const fraction2&);
+	fraction2 operator-(const fraction2&);
+	fraction2 operator*(const fraction2&);
+	fraction2 operator/(const fraction2&);
 
-	void space()
-	{
-		std::cout << " ";
-	}
-	void enter()
-	{
-		std::cout << std::endl;
-	}
 
-	const int getC()
+	int getC()
 	{
-		return chisl;
+		return c;
 	}
-	
-	const int getZ()
+	int getZ()
 	{
-		return znam;
+		return z;
 	}
 };
 
-
-
-
-ostream & operator << (ostream & , fractionAgr & a);
+//ostream& operator << (ostream& o, fraction2 & f)
+//{
+//	return o;
+//}

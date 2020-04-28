@@ -1,75 +1,86 @@
-#include "class_fraction.h"
+#include"class_fraction.h"
 
-void fractionAgr::do_normal(int a)
+
+
+//------------------------------------------fraction1---------------------------------------------
+
+void fraction1::do_normal(int a)
 {
-	chisl /= a;
-	znam /= a;
-	return ;
+	c /= a;
+	z /= a;
 }
 
-fractionAgr fractionAgr::operator+(fractionAgr f)const
+fraction1 fraction1::operator+(const fraction1& a)
 {
-	fractionAgr temp;
-	temp.chisl = chisl * f.znam + znam * f.chisl;
-	temp.znam = znam * f.znam;
+	fraction1 temp;
+	temp.c = c * a.z + a.c*z;
+	temp.z = z * a.z;
+	temp.do_normal(n.find_nod(temp.c, temp.z));
+	return temp;
+}
+fraction1 fraction1::operator-(const fraction1& a)
+{
+	fraction1 temp;
+	temp.c = c * a.z - a.c*z;
+	temp.z = z * a.z;
+	temp.do_normal(n.find_nod(temp.c, temp.z));
+	return temp;
+}
+fraction1 fraction1::operator*(const fraction1& a)
+{
+	fraction1 temp;
+	temp.c = c*a.c;
+	temp.z = z * a.z;
+	temp.do_normal(n.find_nod(temp.c, temp.z));
+	return temp;
+}
+fraction1 fraction1::operator/(const fraction1& a)
+{
+	fraction1 temp;
+	temp.c = c *z;
+	temp.z = z * a.c;
+	temp.do_normal(n.find_nod(temp.c, temp.z));
 	return temp;
 }
 
-fractionAgr fractionAgr::operator-(fractionAgr f)const
+//------------------------------------------fraction2---------------------------------------------
+
+
+void fraction2::do_normal(int a)
 {
-	fractionAgr temp;
-	temp.chisl = chisl * f.znam - znam * f.chisl;
-	temp.znam = znam * f.znam;
+	c /= a;
+	z /= a;
+}
+
+fraction2 fraction2::operator+(const fraction2& a)
+{
+	fraction2 temp;
+	temp.c = c * a.z + a.c*z;
+	temp.z = z * a.z;
+	temp.do_normal(find_nod(temp.c, temp.z));
 	return temp;
 }
-
-fractionAgr fractionAgr::operator*(fractionAgr f)const
+fraction2 fraction2::operator-(const fraction2& a)
 {
-	fractionAgr temp;
-	temp.chisl = chisl * f.chisl;
-	temp.znam = znam * f.znam;
-	int nn = n.find_nod(temp.chisl, temp.znam);
-	temp.do_normal(nn);
+	fraction2 temp;
+	temp.c = c * a.z - a.c*z;
+	temp.z = z * a.z;
+	temp.do_normal(find_nod(temp.c, temp.z));
 	return temp;
 }
-
-fractionAgr fractionAgr::operator/(fractionAgr f)const
+fraction2 fraction2::operator*(const fraction2& a)
 {
-	fractionAgr temp;
-	temp.chisl = chisl * f.znam;
-	temp.znam = znam * f.chisl;
+	fraction2 temp;
+	temp.c = c * a.c;
+	temp.z = z * a.z;
+	temp.do_normal(find_nod(temp.c, temp.z));
 	return temp;
 }
-
-fractionAgr& fractionAgr::operator++()
+fraction2 fraction2::operator/(const fraction2& a)
 {
-	if (znam == 0)
-	{
-		if (chisl == 0)
-		{
-			znam++;
-			chisl++;
-			return *this;
-		}
-
-		std::cout << "error_1!" << std::endl;
-		return *this;
-	}
-
-	if (chisl == 0)
-	{
-		std::cout << "error_2!" << std::endl;
-		return *this;
-	}
-
-	chisl += znam;
-	
-	return *this;
-}
-
-
-ostream & operator << (ostream & o, fractionAgr & a)
-{
-	o << a.getC() << "/" << a.getZ() << endl;
-	return o;
+	fraction2 temp;
+	temp.c = c * z;
+	temp.z = z * a.c;
+	temp.do_normal(find_nod(temp.c, temp.z));
+	return temp;
 }
