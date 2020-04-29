@@ -23,7 +23,6 @@ class3::class3(const int& a, const int& b) :class1(a, b)
 class3& class3::operator+(const class3& a)
 {
 	redef(ch * a.zn + a.ch * zn, zn * a.zn);
-	nod = evklid();
 	reduction();
 	return *this;
 }
@@ -32,7 +31,6 @@ class3& class3::operator+(const class3& a)
 class3& class3::operator-(const class3& a)
 {
 	redef(ch * a.zn - a.ch * zn, ch * a.zn);
-	nod = evklid();
 	reduction();
 	return *this;
 }
@@ -41,7 +39,6 @@ class3& class3::operator-(const class3& a)
 class3& class3::operator*(const class3& a)
 {
 	redef(ch * a.ch, zn * a.zn);
-	nod = evklid();
 	reduction();
 	return *this;
 }
@@ -55,7 +52,6 @@ class3& class3::operator/(const class3& a)
 		return *this;
 	}
 	redef(ch * a.zn, zn * a.ch);
-	nod = evklid();
 	reduction();
 	return *this;
 }
