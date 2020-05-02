@@ -6,6 +6,13 @@ Drob2::Drob2()
     zn = 1;
 }
 
+void Drob2::reduct2()
+{
+    int n = e.nod(ch, zn);
+    ch = ch / n;
+    zn = zn / n;
+}
+
 Drob2::Drob2(int a, int b)
 {
     if (b == 0)
@@ -15,14 +22,7 @@ Drob2::Drob2(int a, int b)
     }
     ch = a;
     zn = b;
-    reduct2(*this);
-}
-
-void Drob2::reduct2()
-{
-    int n = e.nod(ch, zn);
-    ch = ch / n;
-    zn = zn / n;
+    this -> reduct2();
 }
 
 Drob2 Drob2::operator +(const Drob2 &a)//Сложение
@@ -30,7 +30,7 @@ Drob2 Drob2::operator +(const Drob2 &a)//Сложение
     Drob2 c;
     c.ch = zn*a.ch + ch*a.zn;
     c.zn = zn * a.zn;
-    reduct2(c);
+    c.reduct2();
     return c;
 }
 
@@ -39,7 +39,7 @@ Drob2 Drob2::operator -(const Drob2 &a)//Вычитание
     Drob2 c;
     c.ch = ch*a.zn - zn*a.ch;
     c.zn = zn*a.zn;
-    reduct2(c);
+    c.reduct2();
     return c;
 }
 
@@ -48,7 +48,7 @@ Drob2 Drob2::operator *(const Drob2 &a)//Умножение
     Drob2 c;
     c.ch = ch*a.ch;
     c.zn = zn*a.zn;
-    reduct2(c);
+    c.reduct2();
     return c;
 }
 
@@ -57,7 +57,7 @@ Drob2 Drob2::operator /(const Drob2 &a)//Деление
     Drob2 c;
     c.ch = ch * a.zn;
     c.zn = zn * a.ch;
-    reduct2(c);
+    c.reduct2();
     return c;
 }
 
@@ -70,13 +70,13 @@ Drob2 Drob2::operator ++(int)
 {
     Drob2 a = *this;
     ++*this;
-    reduct2(*this);
+    a.reduct2();
     return a;
 }
 
 Drob2 &Drob2::operator ++()
 {
     ch += zn;
-    reduct2(*this);
+    this -> reduct2();
     return *this;
 }

@@ -6,7 +6,7 @@
 class Drob1: private evc
 {
 private:
-    void reduct1(Drob1 &d);
+    void reduct1();
 public:
     int ch, zn;
 
@@ -26,7 +26,7 @@ class Drob2
 {
 private:
     evc e;
-    void reduct2(Drob2 &d);
+    void reduct2();
 public:
     int ch, zn;
 

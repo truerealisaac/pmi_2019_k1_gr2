@@ -26,37 +26,37 @@ void Drob1::reduct1()
 
 Drob1 Drob1::operator +(const Drob1 &a)//Сложение
 {
-    Drob2 c;
+    Drob1 c;
     c.ch = zn*a.ch + ch*a.zn;
     c.zn = zn * a.zn;
-    reduct1(*this);
-    return *this;
+    c.reduct1();
+    return c;
 }
 
 Drob1 Drob1::operator -(const Drob1 &a)//Вычитание
 {
-    Drob2 c;
+    Drob1 c;
     c.ch = ch*a.zn - zn*a.ch;
     c.zn = zn*a.zn;
-    reduct1(c);
+    c.reduct1();
     return c;
 }
 
 Drob1 Drob1::operator *(const Drob1 &a)//Умножение
 {
-    Drob2 c;
+    Drob1 c;
     c.ch = ch*a.ch;
     c.zn = zn*a.zn;
-    reduct1(c);
+    c.reduct1();
     return c;
 }
 
 Drob1 Drob1::operator /(const Drob1 &a)//Деление
 {
-    Drob2 c;
+    Drob1 c;
     c.ch = ch * a.zn;
     c.zn = zn * a.ch;
-    reduct1(c);
+    c.reduct1();
     return c;
 }
 
@@ -70,13 +70,13 @@ Drob1 Drob1::operator ++(int)
 {
     Drob1 a = *this;
     ++*this;
-    reduct1(*this);
+    a.reduct1();
     return a;
 }
 
 Drob1 &Drob1::operator ++()
 {
     ch += zn;
-    reduct1(*this);
+    this -> reduct1();
     return *this;
 }
