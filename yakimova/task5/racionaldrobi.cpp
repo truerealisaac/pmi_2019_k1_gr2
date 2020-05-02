@@ -13,6 +13,25 @@ int evclid(int max, int min)
 		return evclid(min, max % min);
 	}
 }
+roditel::roditel()
+{
+	x = 0;
+	y = 1;
+	nod = 1;
+}
+roditel::roditel(const int& x)
+{
+	this->x = x;
+	y = 1;
+	if (x > y)
+	{
+		nod = evclid(x, y);
+	}
+	else
+	{
+		nod = evclid(y, x);
+	}
+}
 roditel::roditel(const int& x, const int& y)
 {
 	this->x = x;
@@ -46,24 +65,22 @@ int roditel::getnod()
 }
 void racionaldrobi_ag::reduction()
 {
-	nod.set(ch, zn);
 	int x = nod.getnod();
 	ch = ch / x;
 	zn = zn / x;
 }
-racionaldrobi_ag::racionaldrobi_ag() : nod(1,1)
+racionaldrobi_ag::racionaldrobi_ag() : nod()
 {
 	ch = 0;
 	zn = 1;
-	reduction();
 }
-racionaldrobi_ag::racionaldrobi_ag(int a) : nod(1,1)
+racionaldrobi_ag::racionaldrobi_ag(int a) : nod(a)
 {
 	ch = a;
 	zn = 1;
 	reduction();
 }
-racionaldrobi_ag::racionaldrobi_ag(int a, int b) : nod(1,1)
+racionaldrobi_ag::racionaldrobi_ag(int a, int b) : nod(a,b)
 {
 	if (b == 0)
 	{
@@ -127,19 +144,18 @@ void racionaldrobi_na::reduction()
 	ch = ch / x;
 	zn = zn / x;
 }
-racionaldrobi_na::racionaldrobi_na() : roditel(1, 1)
+racionaldrobi_na::racionaldrobi_na() : roditel()
 {
 	ch = 0;
 	zn = 1;
-	reduction();
 }
-racionaldrobi_na::racionaldrobi_na(int a) : roditel(1, 1)
+racionaldrobi_na::racionaldrobi_na(int a) : roditel(a)
 {
 	ch = a;
 	zn = 1;
 	reduction();
 }
-racionaldrobi_na::racionaldrobi_na(int a, int b) : roditel(1,1)
+racionaldrobi_na::racionaldrobi_na(int a, int b) : roditel(a,b)
 {
 	if (b == 0)
 	{
