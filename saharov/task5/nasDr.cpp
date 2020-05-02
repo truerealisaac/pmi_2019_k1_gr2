@@ -17,24 +17,25 @@ Drob1::Drob1(int a, int b)//Конструктор по-значению
     zn = b;
 }
 
-void Drob1::reduct1(Drob1 &d)
+void Drob1::reduct1()
 {
-    int n = nod(d.ch, d.zn);
-    d.ch = d.ch / n;
-    d.zn = d.zn / n;
+    int n = nod(ch, zn);
+    ch = ch / n;
+    zn = zn / n;
 }
 
 Drob1 Drob1::operator +(const Drob1 &a)//Сложение
 {
-    ch = zn*a.ch + ch*a.zn;
-    zn = zn * a.zn;
+    Drob2 c;
+    c.ch = zn*a.ch + ch*a.zn;
+    c.zn = zn * a.zn;
     reduct1(*this);
     return *this;
 }
 
 Drob1 Drob1::operator -(const Drob1 &a)//Вычитание
 {
-    Drob1 c;
+    Drob2 c;
     c.ch = ch*a.zn - zn*a.ch;
     c.zn = zn*a.zn;
     reduct1(c);
@@ -43,7 +44,7 @@ Drob1 Drob1::operator -(const Drob1 &a)//Вычитание
 
 Drob1 Drob1::operator *(const Drob1 &a)//Умножение
 {
-    Drob1 c;
+    Drob2 c;
     c.ch = ch*a.ch;
     c.zn = zn*a.zn;
     reduct1(c);
@@ -52,7 +53,7 @@ Drob1 Drob1::operator *(const Drob1 &a)//Умножение
 
 Drob1 Drob1::operator /(const Drob1 &a)//Деление
 {
-    Drob1 c;
+    Drob2 c;
     c.ch = ch * a.zn;
     c.zn = zn * a.ch;
     reduct1(c);
