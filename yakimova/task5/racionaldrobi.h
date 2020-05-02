@@ -6,6 +6,8 @@ class roditel
 	int x, y;
 	int nod;
     public:
+	roditel();
+	roditel(const int& x);
     roditel(const int &x,const int& y);
 	int getnod();
 	void set(const int& x, const int& y);// на всякий
@@ -31,7 +33,7 @@ public:
 	friend std::istream& operator>>(std::istream& output, racionaldrobi_ag& d);
 	friend std::ostream& operator<<(std::ostream& input, const racionaldrobi_ag& d);
 };
-class racionaldrobi_na : roditel
+class racionaldrobi_na : public roditel
 {
 	int ch;
 	int zn;
