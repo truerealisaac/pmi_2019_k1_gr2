@@ -68,10 +68,9 @@ void Drob1::Print()
 
 Drob1 Drob1::operator ++(int)
 {
-    Drob1 a = *this;
     ++*this;
-    a.reduct1();
-    return a;
+    this -> reduct1();
+    return *this;
 }
 
 Drob1 &Drob1::operator ++()
