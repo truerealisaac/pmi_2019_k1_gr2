@@ -92,37 +92,42 @@ racionaldrobi_ag::racionaldrobi_ag(int a, int b) : nod(a,b)
 	reduction();
 }
 
-racionaldrobi_ag racionaldrobi_ag:: operator+(const racionaldrobi_ag& d)
+const racionaldrobi_ag racionaldrobi_ag:: operator+(const racionaldrobi_ag& d) const
 {
-	ch = ch * d.zn + d.ch * zn;
-	zn = zn * d.zn;
-	racionaldrobi_ag c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.zn + d.ch * zn;
+	zn1 = zn * d.zn;
+	racionaldrobi_ag c(ch1, zn1);
 	return c;
 }
-racionaldrobi_ag racionaldrobi_ag::operator-(const racionaldrobi_ag& d)
+const racionaldrobi_ag racionaldrobi_ag::operator-(const racionaldrobi_ag& d) const
 {
-	ch = ch * d.zn - d.ch * zn;
-	zn = zn * d.zn;
-	racionaldrobi_ag c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.zn - d.ch * zn;
+	zn1 = zn * d.zn;
+	racionaldrobi_ag c(ch1, zn1);
 	return c;
 }
-racionaldrobi_ag racionaldrobi_ag::operator*(const racionaldrobi_ag& d)
+const racionaldrobi_ag racionaldrobi_ag::operator*(const racionaldrobi_ag& d) const
 {
-	ch = ch * d.ch;
-	zn = zn * d.zn;
-	racionaldrobi_ag c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.ch;
+	zn1 = zn * d.zn;
+	racionaldrobi_ag c(ch1, zn1);
 	return c;
 }
-racionaldrobi_ag racionaldrobi_ag::operator/(const racionaldrobi_ag& d)
+const racionaldrobi_ag racionaldrobi_ag::operator/(const racionaldrobi_ag& d) const
 {
-	ch = ch * d.zn;
-	zn = zn * d.ch;
-	racionaldrobi_ag c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.zn;
+	zn1 = zn * d.ch;
+	racionaldrobi_ag c(ch1, zn1);
 	return c;
 }
-racionaldrobi_ag& racionaldrobi_ag:: operator++(int)
+const racionaldrobi_ag& racionaldrobi_ag:: operator++(int) const
 {
-	ch = ch + zn;
+	int ch1;
+	ch1 = ch + zn;
 	return *this;
 }
 std::istream& operator>>(std::istream& output, racionaldrobi_ag& d)
@@ -166,37 +171,42 @@ racionaldrobi_na::racionaldrobi_na(int a, int b) : roditel(a,b)
 	zn = b;
 	reduction();
 }
-racionaldrobi_na racionaldrobi_na:: operator+(const racionaldrobi_na& d)
+const racionaldrobi_na racionaldrobi_na:: operator+(const racionaldrobi_na& d) const
 {
-	ch = ch * d.zn + d.ch * zn;
-	zn = zn * d.zn;
-	racionaldrobi_na c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.zn + d.ch * zn;
+	zn1 = zn * d.zn;
+	racionaldrobi_na c(ch1, zn1);
 	return c;
 }
-racionaldrobi_na racionaldrobi_na::operator-(const racionaldrobi_na& d)
+const racionaldrobi_na racionaldrobi_na::operator-(const racionaldrobi_na& d) const
 {
-	ch = ch * d.zn - d.ch * zn;
-	zn = zn * d.zn;
-	racionaldrobi_na c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.zn - d.ch * zn;
+	zn1 = zn * d.zn;
+	racionaldrobi_na c(ch1, zn1);
 	return c;
 }
-racionaldrobi_na racionaldrobi_na::operator*(const racionaldrobi_na& d)
+const racionaldrobi_na racionaldrobi_na::operator*(const racionaldrobi_na& d) const
 {
-	ch = ch * d.ch;
-	zn = zn * d.zn;
-	racionaldrobi_na c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.ch;
+	zn1 = zn * d.zn;
+	racionaldrobi_na c(ch1, zn1);
 	return c;
 }
-racionaldrobi_na racionaldrobi_na::operator/(const racionaldrobi_na& d)
+const racionaldrobi_na racionaldrobi_na::operator/(const racionaldrobi_na& d) const
 {
-	ch = ch * d.zn;
-	zn = zn * d.ch;
-	racionaldrobi_na c(ch, zn);
+	int ch1, zn1;
+	ch1 = ch * d.zn;
+	zn1 = zn * d.ch;
+	racionaldrobi_na c(ch1, zn1);
 	return c;
 }
-racionaldrobi_na& racionaldrobi_na:: operator++(int)
+const racionaldrobi_na& racionaldrobi_na:: operator++(int) const
 {
-	ch = ch + zn;
+	int ch1;
+	ch1 = ch + zn;
 	return *this;
 }
 std::istream& operator>>(std::istream& output, racionaldrobi_na& d)
