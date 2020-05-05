@@ -14,7 +14,7 @@ int main()
 	cin >> x >> y;
 
 	drobN z = x + y;
-	cout << c << endl;
+	cout << z << endl;
  
 	return 0;
 }

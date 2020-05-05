@@ -6,8 +6,6 @@ using namespace std;
 
 class nod
 {
-	int a, b;
-
 public:
 
 	int evklid(int _a, int _b);
