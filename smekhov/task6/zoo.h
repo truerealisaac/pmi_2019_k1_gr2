@@ -1,42 +1,45 @@
 #pragma once
-class cell
+
+class animal
 {
 public:
 	virtual void sound() const = 0;
-	virtual bool isEmpty() const = 0;
 };
 
-class empty : public cell
+class cell
 {
-	virtual void sound() const;
-	virtual bool isEmpty() const;
+private:
+	bool empty;
+	animal* an;
+public:
+	void addAnimal(animal* a);
+	bool isEmpty() const;
+	void sound() const;
+	cell();
+	cell(const cell& c);
+	~cell();
 };
 
-class wolf : public cell
+class wolf : public animal
 {
 	virtual void sound() const;
-	virtual bool isEmpty() const;
 };
 
-class rabbit : public cell
+class rabbit : public animal
 {
 	virtual void sound() const;
-	virtual bool isEmpty() const;
 };
 
-class tiger : public cell
+class tiger : public animal
 {
 	virtual void sound() const;
-	virtual bool isEmpty() const;
 };
 
 class zoo
 {
-private:
-	cell* animals[10];
 public:
-	zoo(empty& e);
+	cell* cells;
+	zoo();
+	zoo(const zoo& z);
 	~zoo();
-	void addAnimal(cell* a, const int& c);
-	void soundAnimal(const int& c) const;
 };

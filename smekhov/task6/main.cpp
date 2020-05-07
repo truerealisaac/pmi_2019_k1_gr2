@@ -4,7 +4,7 @@
 void wolk(const zoo& z)
 {
 	for (int i = 0; i < 10; i++)
-		z.soundAnimal(i);
+		z.cells[i].sound();
 }
 
 int main()
@@ -12,14 +12,13 @@ int main()
 	tiger t;
 	wolf w;
 	rabbit r;
-	empty e;
-	zoo z(e);
-	for (int i = 0; i < 4; i++)
-		z.addAnimal(&t, rand() % 10);
-	for (int i = 0; i < 3; i++)
-		z.addAnimal(&w, rand() % 10);
-	for (int i = 0; i < 3; i++)
-		z.addAnimal(&r, rand() % 10);
+	zoo z;
+	for (int i = 0; i < 2; i++)
+		z.cells[rand() % 10].addAnimal(&t);
+	for (int i = 0; i < 2; i++)
+		z.cells[rand() % 10].addAnimal(&w);
+	for (int i = 0; i < 2; i++)
+		z.cells[rand() % 10].addAnimal(&r);
 	wolk(z);
 	return 0;
 }

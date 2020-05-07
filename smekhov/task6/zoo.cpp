@@ -1,64 +1,71 @@
 #include "zoo.h"
 #include <iostream>
 
-void empty::sound() const
+cell::cell()
 {
-	std::cout << "...\n";
+	empty = true;
 }
 
-bool empty::isEmpty() const
+cell::~cell()
 {
-	return true;
+	/*if (!empty)
+		delete[]an;*/
+}
+
+void cell::addAnimal(animal* a)
+{
+	if (empty)
+	{
+		empty = false;
+		an = a;
+	}
+}
+
+bool cell::isEmpty() const
+{
+	return empty;
+}
+
+void cell::sound() const
+{
+	if (!empty)
+	{
+		an->sound();
+	}
+	else
+	{
+		std::cout << "<Empty>\n";
+	}
 }
 
 void wolf::sound() const
 {
-	std::cout << "auuu\n";
-}
-
-bool wolf::isEmpty() const
-{
-	return false;
+	std::cout << "<woof>\n";
 }
 
 void rabbit::sound() const
 {
-	std::cout << "nuh-nuh\n";
-}
-
-bool rabbit::isEmpty() const
-{
-	return false;
+	std::cout << "<rab-rab>\n";
 }
 
 void tiger::sound() const
 {
-	std::cout << "arrr\n";
+	std::cout << "<tigerrr>\n";
 }
 
-bool tiger::isEmpty() const
+zoo::zoo()
 {
-	return false;
+	cells = new cell[10];
 }
 
-zoo::zoo(empty& e)
+zoo::zoo(const zoo& z)
 {
+	cells = new cell[10];
 	for (int i = 0; i < 10; i++)
-		animals[i] = &e;
+		cells[i] = z.cells[i];
 }
 
 zoo::~zoo()
 {
-	delete[]animals;
-}
-
-void zoo::addAnimal(cell* a, const int& c)
-{
-	if (animals[c]->isEmpty())
-		animals[c] = a;
-}
-
-void zoo::soundAnimal(const int& c) const
-{
-	animals[c]->sound();
+	delete[]cells;
 }
