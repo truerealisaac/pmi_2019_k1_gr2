@@ -15,7 +15,7 @@ cell::cell(const cell& c) {
 
 cell::~cell() {
 	if (!empty)
-		delete[] anim;
+		delete[]anim;
 }
 
 void cell::addAnimal(animal* an) {
