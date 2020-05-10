@@ -1,5 +1,6 @@
 #pragma once
 
+#define quin 1
 
 class animal {
 public:
@@ -8,15 +9,16 @@ public:
 
 class cell {
 private:
-	animal* anim;
+	animal* anim[quin];
 	bool empty;
+	int count;
 public:
 	cell();
 	cell(const cell& c);
-	~cell();
 
-	void addAnimal(animal* a);
+	void addAnimal(animal* an);
 	bool getEmpty() const;
+	int getCount() const;
 	void sound() const;
 };
 

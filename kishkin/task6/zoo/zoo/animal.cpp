@@ -6,22 +6,21 @@
 
 cell::cell() {
 	empty = true;
+	count = 0;
 }
 
 cell::cell(const cell& c) {
-	anim = c.anim;
 	empty = c.empty;
-}
-
-cell::~cell() {
-	if (!empty)
-		delete[]anim;
+	count = c.count;
+	for (int i = 0; i < c.count; i++)
+		anim[i] = c.anim[i];
 }
 
 void cell::addAnimal(animal* an) {
 	if (empty) {
 		empty = false;
-		anim = an;
+		anim[count] = an;
+		count++;
 	}
 }
 
@@ -29,9 +28,14 @@ bool cell::getEmpty() const {
 	return empty;
 }
 
+int cell::getCount() const {
+	return count;
+}
+
 void cell::sound() const {
 	if (!empty) {
-		anim->sound();
+		for (int i = 0; i < this->getCount(); i++)
+			anim[i]->sound();
 	}
 	else {
 		std::cout << "empty cell\n";
