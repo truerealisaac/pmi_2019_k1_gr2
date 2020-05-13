@@ -1,45 +1,36 @@
-#include"zoo.h"
-
-
-void zoo::check() const
+#pragma once
+#include<iostream>
+using namespace std;
+class cage
 {
-    for (int i = 0; i < 10; i++)
-    {
-        numofCage[i].scream();
-    }
-}
-
-cage::cage()
+    beast* anim;
+    bool freedom;
+public:
+    cage();
+    void  inner(beast* moo);
+    void scream() const;
+};
+class beast
 {
-    freedom = true;
-}
+public:
+    virtual void scream() const = 0;
+};
 
-void cage::inner(beast* moo)
+class zoo
 {
-    anim = moo;
-    freedom = false;
-}
+public:
+    cage numofCage[10];
+    void check() const;
+};
 
-void cage::scream() const
+class elephant : public beast
 {
-    if (freedom)
-    {
-        cout << "freedom\n";
-    }
-    else
-    {
-        anim->scream();
-    }
+public:
+    virtual void scream() const;
+};
 
-}
-
-void zebra::scream() const
+class zebra : public beast
 {
-    cout << "ze-ze-ze-ze\n";
-}
-
-void elephant::scream() const
-{
-    cout << "ry-ry-ry-ry\n";
-}
-
+public:
+    virtual void scream() const;
+};
